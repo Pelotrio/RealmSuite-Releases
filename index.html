@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RealmSuite: mods for Paladins</title>
+  <meta name="description" content="RealmSuite is a launcher and a set of mods for Paladins: a scoreboard that shows more, skins and colors only you see, queueing from the Shooting Range, sound packs.">
+  <meta name="theme-color" content="#101214">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self'; media-src 'self'; connect-src https://api.github.com; base-uri 'none'; form-action 'none'">
+  <!-- The GitHub repository the page points at (Pelotrio/RealmSuite-Releases): this tag and the links below name it;
+       site.js reads it from here. -->
+  <meta name="realm-repo" content="Pelotrio/RealmSuite-Releases">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="style.css">
+  <script src="site.js" defer></script>
+</head>
+<body>
+
+<svg class="sprite" width="0" height="0" aria-hidden="true" focusable="false"><defs><clipPath id="crest-rim"><path d="M32 4C41.4 16 50.4 28.4 59 41C49.2 45.5 40.2 51.4 32 58.5C23.8 51.4 14.8 45.5 5 41C13.6 28.4 22.6 16 32 4Z"/></clipPath><linearGradient id="crest-sheen" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".42" stop-color="#fff" stop-opacity=".42"/><stop offset=".5" stop-color="#fff" stop-opacity=".95"/><stop offset=".58" stop-color="#fff" stop-opacity=".42"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient><radialGradient id="crest-glow"><stop offset="0" stop-color="#4C8DFF" stop-opacity=".62"/><stop offset=".55" stop-color="#4C8DFF" stop-opacity=".2"/><stop offset="1" stop-color="#4C8DFF" stop-opacity="0"/></radialGradient></defs><symbol id="crest-steel" viewBox="0 0 64 64"><path d="M32 4C41.4 16 50.4 28.4 59 41C49.2 45.5 40.2 51.4 32 58.5C23.8 51.4 14.8 45.5 5 41C13.6 28.4 22.6 16 32 4Z" fill="#8C98A6" stroke="#1B2027" stroke-width="1.4" stroke-linejoin="round"/><path d="M32 4C41.4 16 50.4 28.4 59 41L51.98 39.13C45.62 29.8 38.96 20.63 32 11.75Z" fill="#AAB5C1"/><path d="M59 41C49.2 45.5 40.2 51.4 32 58.5L32 52.08C38.07 46.82 44.73 42.46 51.98 39.13Z" fill="#737F8D"/><path d="M32 58.5C23.8 51.4 14.8 45.5 5 41L12.02 39.13C19.27 42.46 25.93 46.82 32 52.08Z" fill="#8C98A6"/><path d="M5 41C13.6 28.4 22.6 16 32 4L32 11.75C25.04 20.63 18.38 29.8 12.02 39.13Z" fill="#D6DDE4"/></symbol><symbol id="crest-core" viewBox="0 0 64 64"><path d="M32 11.75C38.96 20.63 45.62 29.8 51.98 39.13C44.73 42.46 38.07 46.82 32 52.08C25.93 46.82 19.27 42.46 12.02 39.13C18.38 29.8 25.04 20.63 32 11.75Z" fill="#0A0F1A"/><circle cx="32" cy="33.8" r="18.94" fill="url(#crest-glow)"/><path d="M32 20.69C36.14 25.97 40.1 31.43 43.88 36.97C39.57 38.95 35.61 41.55 32 44.67C28.39 41.55 24.43 38.95 20.12 36.97C23.9 31.43 27.86 25.97 32 20.69Z" fill="#3D78EC"/><path d="M32 33.8L32 20.69C36.14 25.97 40.1 31.43 43.88 36.97Z" fill="#5E9BFF"/><path d="M32 33.8L43.88 36.97C39.57 38.95 35.61 41.55 32 44.67Z" fill="#2A62D6"/><path d="M32 33.8L32 44.67C28.39 41.55 24.43 38.95 20.12 36.97Z" fill="#3D78EC"/><path d="M32 33.8L20.12 36.97C23.9 31.43 27.86 25.97 32 20.69Z" fill="#B9D3FF"/></symbol><symbol id="icon-board" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2.75" width="12" height="10.5" rx="1.25"/><path d="M2 6H14M8 6V13.25M3.75 10.5H6.25M9.75 8.25H12.25M9.75 10.5H12.25"/><rect x="3.5" y="7.5" width="3" height="1.5" fill="currentColor" stroke="none"/></symbol><symbol id="icon-forge" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1.5 5.5H14.5V8L11.25 9.25V11L13 13.75H3L4.75 11V9.25L3.25 8Z"/><path d="M8 0.25L9.5 2L8 3.75L6.5 2Z" fill="currentColor" stroke="none"/></symbol><symbol id="icon-queue" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3.5 1.75H12.5M3.5 14.25H12.5"/><path d="M4.75 1.75C4.75 5.5 7.25 6.25 7.25 8C7.25 9.75 4.75 10.5 4.75 14.25M11.25 1.75C11.25 5.5 8.75 6.25 8.75 8C8.75 9.75 11.25 10.5 11.25 14.25"/><path d="M6 13.25H10L8 10.75Z" fill="currentColor" stroke="none"/></symbol><symbol id="icon-audio" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2.25 6.5V9.5M5.125 4V12M10.875 3.25V12.75M13.75 6V10"/><rect x="7" y="1.5" width="2" height="13" rx="1" fill="currentColor" stroke="none"/></symbol><symbol id="icon-boost" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2.8 12.5A6 6 0 1 1 13.2 12.5"/><path d="M8 9.5L11.25 5.5"/><circle cx="8" cy="9.5" r="1.6" fill="currentColor" stroke="none"/></symbol></svg>
+
+<div class="app">
+
+  <aside class="side">
+    <a class="side__brand" href="#top" aria-label="RealmSuite, top of the page">
+      <svg class="crest" viewBox="0 0 64 64" width="28" height="28" aria-hidden="true"><use href="#crest-steel"/><use href="#crest-core"/></svg>
+      <span>RealmSuite</span>
+    </a>
+
+    <nav class="side__nav" aria-label="Page">
+      <p class="side__label">Page</p>
+      <a href="#top">Overview</a>
+      <a href="#before">Before you download</a>
+      <a href="#install">Install and update</a>
+      <a href="#faq">Questions</a>
+      <a href="#changelog">Changelog</a>
+
+      <p class="side__label">Mods</p>
+      <a href="#realmboard"><svg class="icon" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><use href="#icon-board"/></svg>RealmBoard</a>
+      <a href="#realmforge"><svg class="icon" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><use href="#icon-forge"/></svg>RealmForge</a>
+      <a href="#realmqueue"><svg class="icon" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><use href="#icon-queue"/></svg>RealmQueue</a>
+      <a href="#realmaudio"><svg class="icon" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><use href="#icon-audio"/></svg>RealmAudio</a>
+      <a href="#realmboost"><svg class="icon" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><use href="#icon-boost"/></svg>RealmBoost</a>
+
+      <p class="side__label" hidden>Coming soon</p>
+      <a href="#realmcraft" hidden>RealmCraft</a>
+    </nav>
+
+    <div class="side__foot">
+      <a class="button button--primary button--block" href="https://github.com/Pelotrio/RealmSuite-Releases/releases/latest">Download</a>
+    </div>
+  </aside>
+
+  <main class="main" id="top">
+
+    <header class="hero">
+      <h1>RealmSuite</h1>
+      <p class="hero__line">Mods for Paladins, in one launcher.</p>
+
+      <div class="hero__actions">
+        <a class="button button--primary button--large" href="https://github.com/Pelotrio/RealmSuite-Releases/releases/latest" data-download>Download the latest release</a>
+        <a class="button button--large" href="#realmboard">See the mods</a>
+        <span class="hero__meta" data-version>For Windows</span>
+      </div>
+
+      <!-- MEDIA (owner): the strong visual above the fold: the RealmBoard scoreboard as hero.jpg or hero.png in site/media/
+           (a 16:9 picture), or a loop. The caption under the figure (.hero__caption) says it is an offline render with
+           sample data; change it if the picture is a real capture. Whatever goes in must show invented or no player
+           names: the offline renderer's scenes carry real players' names. Until a file loads the slot shows the crest;
+           ?slots in the address shows the file names instead. -->
+      <figure class="slot slot--hero" data-media="media/hero.mp4 media/hero.webm media/hero.gif media/hero.png media/hero.jpg" data-alt="RealmBoard's scoreboard, rendered offline with sample data: both teams in one table with a symbol for each stat, team totals, items and a summary bar.">
+        <div class="slot__brand" aria-hidden="true">
+          <svg class="crest crest--hero" viewBox="0 0 64 64" width="144" height="144">
+            <use href="#crest-steel"/>
+            <g clip-path="url(#crest-rim)"><g transform="rotate(36.1 32 32)"><rect class="crest__light" x="23" y="-40" width="18" height="150" fill="url(#crest-sheen)"/></g></g>
+            <use href="#crest-core"/>
+          </svg>
+        </div>
+        <div class="slot__fill">
+          <p class="slot__what">Hero slot</p>
+          <p class="slot__file">site/media/hero.png or .jpg (a still), hero.mp4, .webm or .gif (a loop)</p>
+          <p class="slot__hint">The scoreboard open in a match, both teams and the party bars visible. This is the first thing a visitor sees.</p>
+        </div>
+      </figure>
+
+      <p class="hero__caption">RealmBoard's scoreboard, rendered offline with sample data.</p>
+
+      <nav class="tiles" aria-label="The mods">
+        <a href="#realmboard"><svg class="icon" width="20" height="20" viewBox="0 0 16 16" aria-hidden="true"><use href="#icon-board"/></svg><span class="tiles__name">RealmBoard</span><span class="tiles__what">Scoreboard, voice</span></a>
+        <a href="#realmforge"><svg class="icon" width="20" height="20" viewBox="0 0 16 16" aria-hidden="true"><use href="#icon-forge"/></svg><span class="tiles__name">RealmForge</span><span class="tiles__what">Skins and colors</span></a>
+        <a href="#realmqueue"><svg class="icon" width="20" height="20" viewBox="0 0 16 16" aria-hidden="true"><use href="#icon-queue"/></svg><span class="tiles__name">RealmQueue</span><span class="tiles__what">Queue in range</span></a>
+        <a href="#realmaudio"><svg class="icon" width="20" height="20" viewBox="0 0 16 16" aria-hidden="true"><use href="#icon-audio"/></svg><span class="tiles__name">RealmAudio</span><span class="tiles__what">Sound packs</span></a>
+        <a href="#realmboost"><svg class="icon" width="20" height="20" viewBox="0 0 16 16" aria-hidden="true"><use href="#icon-boost"/></svg><span class="tiles__name">RealmBoost</span><span class="tiles__what">Frame cap</span></a>
+      </nav>
+    </header>
+
+    <section class="section" id="before" aria-labelledby="before-title">
+      <h2 id="before-title">Before you download</h2>
+      <div class="panel">
+        <dl class="rows">
+          <div><dt>Works with</dt><dd>Paladins on Windows 64-bit, from Steam, Epic or the Hi-Rez standalone install. The launcher finds the game; if it can't, point it at <code>Paladins.exe</code> in its Settings. Nothing else to install: <code>RealmSuite.exe</code> is the one program at the root of the folder, and it needs no .NET.</dd></div>
+          <div><dt>Game build</dt><dd>Each release is made for one Paladins build, named in its release notes. After a Paladins patch the launcher loads nothing into the game until a release for the new build is out, and you can start Paladins normally through Steam or Epic in the meantime.</dd></div>
+          <div><dt>Updates</dt><dd>The launcher fetches new releases and checks their signature, and installs them while Paladins is closed.</dd></div>
+          <div><dt>Is it safe?</dt><dd>RealmSuite loads code into the game, as any game mod does. Read <a href="#safe">what that means and what we can say</a> before you decide.</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="mods-title">
+      <h2 id="mods-title">The mods in 1.0</h2>
+      <p class="section__sub">Switch each mod on or off in the launcher's Mods page. Each mod's own settings, and the switch of each of its features, open in the game with F1 once Paladins is running.</p>
+
+      <article class="mod" id="realmboard" aria-labelledby="m-board">
+        <header class="mod__head">
+          <h3 id="m-board"><svg class="icon" width="20" height="20" viewBox="0 0 16 16" aria-hidden="true"><use href="#icon-board"/></svg>RealmBoard</h3>
+          <p>See who you are playing with and against.</p>
+        </header>
+        <div class="mod__body">
+          <!-- MEDIA (owner): site/media/realmboard.png|jpg|gif: the scoreboard open in a match, party bars visible. -->
+          <figure class="slot" data-media="media/realmboard.png media/realmboard.jpg media/realmboard.gif" data-alt="The RealmBoard scoreboard over a local Shooting Range fight with ten champion bots: both teams in one table, the best value of each column in gold, the summary bar below.">
+            <div class="slot__fill">
+              <p class="slot__what">Screenshot slot</p>
+              <p class="slot__file">site/media/realmboard.png</p>
+              <p class="slot__hint">The scoreboard open in a match, party bars visible.</p>
+            </div>
+          </figure>
+          <dl class="rows">
+            <div><dt>Scoreboard</dt><dd>On by default. Replaces the TAB board: both teams in one table, a symbol over each stat (kills, deaths, assists, damage, healing, shielding, objective time, damage taken, ping), team totals, items and ultimate charge, the best values highlighted. A summary bar under it shows the map and time, anti-healing, credits, solo kills and best streak, and the game is blurred behind it.</dd></div>
+            <div><dt>Champion select board</dt><dd>Both teams' names, ratings and picks on a key (Tab by default).</dd></div>
+            <div><dt>Enemy names</dt><dd>Champion select shows the enemies' names, where the game shows "Enemy 1" to "Enemy 5".</dd></div>
+            <div><dt>Parties</dt><dd>Players who queued together share a color, on the board and in champion select.</dd></div>
+            <div><dt>Voice</dt><dd>Turn your microphone on or off, and mute teammates or set each one's volume.</dd></div>
+          </dl>
+        </div>
+        <div class="guide">
+          <h4>Get started</h4>
+          <ol>
+            <li>The scoreboard is on. In a match, hold Tab: the board opens in place of the game's own, and closes when you let go. While it is open, R swaps the items for the five cards.</li>
+            <li>To change it, press F1, open Realm Board, then Settings. <em>Scoreboard on TAB</em> switches it off; below it are <em>Highlight best values</em>, <em>Summary bar</em>, <em>Background blur</em>, <em>Talent icons</em> and <em>Hide the game's HUD</em>.</li>
+            <li>In champion select, press Tab for the board of both teams. Change its <em>Toggle key</em> in Settings.</li>
+            <li>Open the Voice tab to switch your microphone and to mute or set the volume of each teammate who is in voice.</li>
+          </ol>
+        </div>
+      </article>
+
+      <article class="mod" id="realmforge" aria-labelledby="m-forge">
+        <header class="mod__head">
+          <h3 id="m-forge"><svg class="icon" width="20" height="20" viewBox="0 0 16 16" aria-hidden="true"><use href="#icon-forge"/></svg>RealmForge</h3>
+          <p>Change how your champion looks, on your screen only.</p>
+        </header>
+        <div class="mod__body">
+          <!-- MEDIA (owner): site/media/realmforge.png|jpg|gif: the Colors tab beside a recolored champion. -->
+          <figure class="slot" data-media="media/realmforge.png media/realmforge.jpg media/realmforge.gif" data-alt="The RealmForge Colors tab beside Io in Stellar Protector, recolored with the Synthwave look.">
+            <div class="slot__fill">
+              <p class="slot__what">Screenshot slot</p>
+              <p class="slot__file">site/media/realmforge.png</p>
+              <p class="slot__hint">The Colors tab beside a recolored champion.</p>
+            </div>
+          </figure>
+          <dl class="rows">
+            <div><dt>Skins</dt><dd>Wear body, weapon and mount skins on the champion you play. Companions such as pets and turrets wear the look you save for them.</dd></div>
+            <div><dt>Effects</dt><dd>Effects from other skin lines, for all of a champion's effects or per ability.</dd></div>
+            <div><dt>Colors</dt><dd>Color layers on a skin's materials: a fixed color, a fade, a hue cycle, a flicker, or a color that follows your ultimate, health or ammo.</dd></div>
+            <div><dt>Custom</dt><dd>Wear skins from Tempest <code>.tempest</code> files that you import in the launcher.</dd></div>
+            <div><dt>Profiles</dt><dd>Named profiles for each champion, worn again each time you spawn.</dd></div>
+            <div><dt>Champion select</dt><dd>Shows your pick in the skins you chose.</dd></div>
+          </dl>
+        </div>
+        <div class="guide">
+          <h4>Get started</h4>
+          <ol>
+            <li>In the game press F1 and open Realm Forge. Its tabs are Skins, Effects and Colors, each with your champion and its profile at the top.</li>
+            <li>On Skins, pick a body, weapon and mount skin. They load and wear while you play, in a match or in the Shooting Range.</li>
+            <li>On Effects, choose another skin line's effects for all effects or for a single ability.</li>
+            <li>On Colors, add a layer, choose the part and its source, then press Show me to flash it on your champion. Colors show in a match or the Shooting Range, not in champion select; try them in the range first.</li>
+            <li>To wear a Tempest skin, open the launcher's Skins page, press <em>Import a Tempest Skin</em> and choose the <code>.tempest</code> file. It shows at once, even with the game running, in the Skins tab's weapon list with an <em>Imported</em> tag: click it to wear it. Custom skins are worn in the Shooting Range and in matches.</li>
+            <li>Your saved look is worn again each time you spawn. Switch that off in Settings if you don't want it.</li>
+          </ol>
+        </div>
+        <p class="mod__note"><span class="dot dot--live" aria-hidden="true"></span>Nobody else sees your skins. The mod sends nothing to the server.</p>
+      </article>
+
+      <article class="mod" id="realmqueue" aria-labelledby="m-queue">
+        <header class="mod__head">
+          <h3 id="m-queue"><svg class="icon" width="20" height="20" viewBox="0 0 16 16" aria-hidden="true"><use href="#icon-queue"/></svg>RealmQueue</h3>
+          <p>Queue for a match without leaving the Shooting Range.</p>
+        </header>
+        <div class="mod__body">
+          <!-- MEDIA (owner): site/media/realmqueue.png|jpg|gif: champion select open over the Shooting Range. -->
+          <figure class="slot" data-media="media/realmqueue.png media/realmqueue.jpg media/realmqueue.gif" data-alt="RealmQueue's Shooting Range page: Siege maps as tiles with their loading art, Dawnforge marked as the map you are on.">
+            <div class="slot__fill">
+              <p class="slot__what">Screenshot slot</p>
+              <p class="slot__file">site/media/realmqueue.png</p>
+              <p class="slot__hint">The draft panel open over the Shooting Range.</p>
+            </div>
+          </figure>
+          <dl class="rows">
+            <div><dt>Queue</dt><dd>Pick a queue from the range and keep practicing until the match is found.</dd></div>
+            <div><dt>Accept</dt><dd>A found match is accepted for you. You can turn that off and accept it yourself.</dd></div>
+            <div><dt>Champion select</dt><dd>It appears over the range: pick and lock a champion there, or name one to be picked for you.</dd></div>
+            <div><dt>Map</dt><dd>Choose which map the range loads.</dd></div>
+            <div><dt>After the match</dt><dd>After a match you queued for from the range, the game goes back to that range map by itself.</dd></div>
+          </dl>
+        </div>
+        <div class="guide">
+          <h4>Get started</h4>
+          <ol>
+            <li>In the lobby or the Shooting Range press F1 and open Realm Queue. On the Queue tab the training and casual queues are listed by the game's own titles, such as Siege Training and Onslaught Training.</li>
+            <li>Choose a queue and press Join Queue. The page shows how long you have been queued and what comes next; Leave Queue cancels.</li>
+            <li>Keep practicing. When a casual or training match is found it is accepted for you, also for a queue you joined from the game's Play screen; ranked is never accepted for you. With <em>Accept found matches</em> off, press Accept Match on the page, because the range shows no prompt.</li>
+            <li>Champion select opens over the range: pick a champion, change your mind as often as you like, and Lock In. Without Lock In, your last pick locks shortly before the timer runs out. Set <em>Champion to pick</em> to have one picked for you.</li>
+            <li>The Shooting Range page lists the maps; choose one and press Go to Map. Change Champion there switches your champion in the range. After a match you queued for from the range, the game returns to that map by itself; switch <em>Return to the range</em> off in Settings if you would rather not.</li>
+          </ol>
+        </div>
+      </article>
+
+      <article class="mod" id="realmaudio" aria-labelledby="m-audio">
+        <header class="mod__head">
+          <h3 id="m-audio"><svg class="icon" width="20" height="20" viewBox="0 0 16 16" aria-hidden="true"><use href="#icon-audio"/></svg>RealmAudio</h3>
+          <p>Load voice and sound packs beside the game.</p>
+        </header>
+        <div class="mod__body">
+          <!-- MEDIA (owner): site/media/realmaudio.png|jpg|gif: the Packs tab with a pack switched on. -->
+          <figure class="slot" data-media="media/realmaudio.png media/realmaudio.jpg media/realmaudio.gif" data-alt="RealmAudio's Packs tab: three Tempest sound mods, one of them switched on.">
+            <div class="slot__fill">
+              <p class="slot__what">Screenshot slot</p>
+              <p class="slot__file">site/media/realmaudio.png</p>
+              <p class="slot__hint">The Packs tab with a pack switched on.</p>
+            </div>
+          </figure>
+          <dl class="rows">
+            <div><dt>Packs</dt><dd>A folder of <code>.pck</code> files, a single <code>.pck</code> or a Tempest <code>.tempest</code> mod. A voice language is a pack too.</dd></div>
+            <div><dt>Order</dt><dd>Several packs can be on at once. Where two replace the same sound, the one on top wins.</dd></div>
+            <div><dt>Beside the game</dt><dd>Nothing in the game's folder is overwritten, and only you hear the change. Switch a pack off and the installed sounds come back.</dd></div>
+          </dl>
+        </div>
+        <div class="guide">
+          <h4>Get started</h4>
+          <ol>
+            <li>In the game press F1, open Realm Audio and press <em>Open Packs Folder</em>. It is <code>Data/RealmAudio/Packs</code> inside your RealmSuite folder.</li>
+            <li>Put your pack in it and press <em>Rescan Folder</em>. The pack appears in the list.</li>
+            <li>Switch the pack on. Use the arrows to put the pack you want to win on top.</li>
+            <li>Hear it from the next time its sounds load: load another champion or start a match. A sound that is already loaded keeps playing as it was, and some menu sounds may not change.</li>
+          </ol>
+        </div>
+      </article>
+
+      <article class="mod" id="realmboost" aria-labelledby="m-boost">
+        <header class="mod__head">
+          <h3 id="m-boost"><svg class="icon" width="20" height="20" viewBox="0 0 16 16" aria-hidden="true"><use href="#icon-boost"/></svg>RealmBoost</h3>
+          <p>More frames and less delay, each change measured.</p>
+        </header>
+        <div class="mod__body">
+          <!-- MEDIA (owner): site/media/realmboost.png|jpg|gif: the Realm Boost Settings tab with the frame cap choice. -->
+          <figure class="slot" data-media="media/realmboost.png media/realmboost.jpg media/realmboost.gif" data-alt="RealmBoost's Settings tab: the frame cap in matches and in menus, its toggle key, and garbage collection when it cannot be seen.">
+            <div class="slot__fill">
+              <p class="slot__what">Screenshot slot</p>
+              <p class="slot__file">site/media/realmboost.png</p>
+              <p class="slot__hint">The Realm Boost Settings tab with the frame cap choice.</p>
+            </div>
+          </figure>
+          <dl class="rows">
+            <div><dt>Frame cap</dt><dd>Keep the game's own limit (228 FPS), remove it, or set yours between 30 and 1000.</dd></div>
+            <div><dt>Menus</dt><dd>Give the lobby and champion select a cap of their own.</dd></div>
+            <div><dt>Toggle key</dt><dd>A hotkey turns the cap off and back on.</dd></div>
+            <div><dt>Live</dt><dd>Changes apply on the next frame, without a restart. Switch the mod off and the game gets its own setting back.</dd></div>
+            <div><dt>Alt-tab</dt><dd>Leaving fullscreen is an ordinary window switch, not a stall.</dd></div>
+            <div><dt>Smoother matches</dt><dd>The game's 30-second garbage-collection hitch waits while you play and lands on your death camera instead.</dd></div>
+          </dl>
+        </div>
+        <div class="guide">
+          <h4>Get started</h4>
+          <ol>
+            <li>RealmBoost starts out leaving the game's own cap as it is. In the game press F1, open Realm Boost, then Settings.</li>
+            <li>Under Frame cap, set <em>In matches</em> to Off, or to Custom and a <em>Match limit (FPS)</em>. It covers matches, the Shooting Range and loading.</li>
+            <li>Set <em>In menus</em> if you want the lobby and champion select to run at another rate; with Custom, set a <em>Menu limit (FPS)</em>.</li>
+            <li>Choose a <em>Toggle key</em> to turn the cap off and back on while you play.</li>
+            <li>The game's garbage collection, a short hitch every 30 seconds, waits while you play and runs when your champion dies, where you don't see it. Switch <em>Garbage collection when it cannot be seen</em> off in Settings to keep the game's timing.</li>
+          </ol>
+        </div>
+        <p class="mod__note">Measured in the Shooting Range on one PC: without the cap, input reached the screen in 1.7 ms instead of 2.3 ms (median). More frames mean more CPU and GPU work and power.</p>
+      </article>
+    </section>
+
+    <!-- Hidden (owner, 2026-11-02: "RealmCraft take out for now"); take `hidden` off here and on the two side lines to bring it back. -->
+    <section class="section" id="soon" aria-labelledby="soon-title" hidden>
+      <h2 id="soon-title">Coming soon</h2>
+      <p class="section__sub">Not part of 1.0.</p>
+
+      <article class="mod" id="realmcraft" aria-labelledby="m-craft">
+        <header class="mod__head">
+          <h3 id="m-craft">RealmCraft</h3>
+          <p>Minecraft, inside Paladins.</p>
+        </header>
+        <div class="mod__body">
+          <!-- MEDIA (owner): site/media/realmcraft.mp4|webm|gif|png: blocks placed and broken in the Shooting Range. -->
+          <figure class="slot" data-media="media/realmcraft.mp4 media/realmcraft.webm media/realmcraft.gif media/realmcraft.png" data-alt="Blocks placed and broken in the Shooting Range with RealmCraft.">
+            <div class="slot__fill">
+              <p class="slot__what">Clip slot</p>
+              <p class="slot__file">site/media/realmcraft.mp4, .webm, .gif or .png</p>
+              <p class="slot__hint">Blocks placed and broken in the Shooting Range.</p>
+            </div>
+          </figure>
+          <dl class="rows">
+            <div><dt>Blocks</dt><dd>Place and break blocks from the Shooting Range. A Minecraft server decides what happens, and Paladins draws the result.</dd></div>
+            <!-- OWNER: written from the research, not from a finished mod (docs/mods has no RealmCraft page yet).
+                 Rewrite it, and move the card into the mods list, when the mod ships. -->
+          </dl>
+        </div>
+      </article>
+    </section>
+
+    <section class="section" id="install" aria-labelledby="install-title">
+      <h2 id="install-title">Install in three steps</h2>
+      <ol class="steps">
+        <li>
+          <span class="steps__n" aria-hidden="true"></span>
+          <div>
+            <h3>Download the installer</h3>
+            <p>On the <a href="https://github.com/Pelotrio/RealmSuite-Releases/releases/latest">latest release</a>, under Assets, download <code>RealmSuite-<var>version</var>-Setup.exe</code> (for 1.0, <code>RealmSuite-1.0.0-Setup.exe</code>). The other files there are the zip, for people who want no installer, and files for the updater; "Source code" is not the game package.</p>
+          </div>
+        </li>
+        <li>
+          <span class="steps__n" aria-hidden="true"></span>
+          <div>
+            <h3>Run it</h3>
+            <p>It installs for your Windows user, without asking for admin rights, into <code>AppData\Local\Programs\RealmSuite</code>, and adds RealmSuite to the Start menu. Windows may say "Windows protected your PC" because the program is not code-signed: choose <strong>More info</strong>, then <strong>Run anyway</strong>. To remove it later, use Installed apps in Windows' Settings; it asks whether to keep your settings, skin profiles and sound packs.</p>
+          </div>
+        </li>
+        <li>
+          <span class="steps__n" aria-hidden="true"></span>
+          <div>
+            <h3>Open RealmSuite and press Play</h3>
+            <p>The installer opens it at the end, and the Start menu has it after that. The Play page shows the game it found and says <strong>Ready to play</strong>; if it found none, point it at <code>Paladins.exe</code> in Settings. Press <strong>Play</strong>: Paladins starts and RealmSuite loads into it. Paladins signs in as usual unless you choose otherwise under Settings, Sign in. In the game, F1 opens the menu, and you can change that key in the launcher's Settings.</p>
+          </div>
+        </li>
+      </ol>
+      <p class="section__sub">Prefer no installer? Download <code>RealmSuite-<var>version</var>.zip</code> instead, extract it to a folder you can write to and will keep (not Program Files), and run <code>RealmSuite.exe</code> in it.</p>
+
+      <h2 class="sub" id="update-title">Updates</h2>
+      <div class="panel">
+        <dl class="rows">
+          <div><dt>Checking</dt><dd>The launcher checks for a new release when it starts and every few hours while it is open, and downloads only the files that changed. It verifies the release's signature and each file's hash before it installs anything.</dd></div>
+          <div><dt>Installing</dt><dd>An update installs only while Paladins is closed. When one is ready, the Play page offers <strong>Restart to Update</strong>: close the game, then press it. An update that is ready while you play installs the next time the launcher starts.</dd></div>
+          <div><dt>After a Paladins patch</dt><dd>The Play page says "Paladins updated, RealmSuite update pending", and the launcher loads nothing into the game until a release for the new build arrives. Start Paladins normally through Steam or Epic in the meantime; once the release is out, the launcher downloads it and you restart to update.</dd></div>
+          <div><dt>Uninstall</dt><dd>Close Paladins and the launcher, then delete the RealmSuite folder.</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="section" id="faq" aria-labelledby="faq-title">
+      <h2 id="faq-title">Questions</h2>
+      <div class="faq">
+        <details id="safe">
+          <summary>Is it safe?</summary>
+          <p>RealmSuite works by loading code into the running Paladins process; that is how it can add a scoreboard, change skins and draw its own menus. It is an independent project, not made or endorsed by Hi-Rez Studios, and no one can promise how the game's rules or its anti-cheat will treat any modification. Use it at your own risk.</p>
+          <p>What we can say:</p>
+          <ul>
+            <li>Every release is signed. The launcher checks the signature and each file's hash before it installs an update, and installs only while Paladins is closed.</li>
+            <li>You choose what runs. Every mod, and every feature of a mod, has its own switch, and deleting the folder removes everything.</li>
+            <li>RealmAudio writes nothing to the game's folder, and RealmForge's skins exist only on your screen: that mod sends nothing to the server.</li>
+          </ul>
+        </details>
+        <details>
+          <summary>What happens when Paladins patches?</summary>
+          <p>Each RealmSuite release is built for one Paladins build. After a patch the launcher sees that the game no longer matches, loads nothing into it, and says "Paladins updated, RealmSuite update pending". You can start Paladins normally through Steam or Epic without RealmSuite. When a release for the new build is out, the launcher downloads it and offers Restart to Update.</p>
+        </details>
+        <details>
+          <summary>How do I sign in to Paladins?</summary>
+          <p>Play starts Paladins and signs in the way you chose under Settings, Sign in. <strong>Steam account</strong>: Paladins signs in through Steam. <strong>A saved account</strong>: one you added, with its password encrypted on this PC; Paladins writes its sign-in into its own log files. <strong>In the game</strong>: Paladins' own sign-in, or the one it remembers. Out of the box it is In the game.</p>
+        </details>
+        <details>
+          <summary>Can I start Paladins from Steam or Epic myself?</summary>
+          <p>Play always adds RealmSuite. A game you start from Steam, Epic or <code>Paladins.exe</code> gets RealmSuite only if <strong>Join games started elsewhere</strong> is switched on under Settings, Launching; otherwise it runs without it.</p>
+        </details>
+        <details>
+          <summary>Which Paladins installs work?</summary>
+          <p>Steam, Epic and the Hi-Rez standalone install on Windows. The launcher finds them from the stores' records; if yours is somewhere else, choose its <code>Paladins.exe</code> in the launcher's Settings.</p>
+        </details>
+        <details>
+          <summary>How do I uninstall it?</summary>
+          <p>Close Paladins and the launcher, then delete the RealmSuite folder. Your settings, logs and saved skin profiles are inside it, so they go with it.</p>
+        </details>
+        <details>
+          <summary>Will other players see my skins?</summary>
+          <p>No. Custom skins, colors and effects exist only on your screen. The mod sends nothing to the server, so everyone else sees your normal skins, and you see theirs as they are.</p>
+        </details>
+        <details>
+          <summary>A mod stopped working. What now?</summary>
+          <p>A feature that fails stops on its own and the menu says why. Switch the mod or the feature off and on again, and if it stops again, tell us (see below) with the log: <strong>Open Logs</strong> in the launcher's Settings shows the folder, and <code>Logs/host.log</code> is the one to send.</p>
+        </details>
+        <details>
+          <summary>The launcher says an update is unfinished. What now?</summary>
+          <p>Close Paladins and press Try Again. If that does not help, run the latest release's <code>RealmSuite-<var>version</var>-Setup.exe</code> again (or, for a zip install, extract its zip over your RealmSuite folder); this repairs the program and keeps your settings, logs and saved skin profiles.</p>
+        </details>
+        <details>
+          <summary>Where do I ask a question or report a problem?</summary>
+          <!-- Discord: the permanent invite to #welcome (research/showcase-night/discord/README.md). GitHub issues need
+               Issues switched on in the Pelotrio/RealmSuite-Releases repository's settings. -->
+          <p>Open an issue on <a href="https://github.com/Pelotrio/RealmSuite-Releases/issues">GitHub</a> and say which mod and what you did, with <code>Logs/host.log</code> if the game or a mod failed.<span data-discord> You can also ask in the <a href="https://discord.gg/RnS6Q5MXXh">Discord</a>.</span></p>
+        </details>
+      </div>
+    </section>
+
+    <section class="section" id="changelog" aria-labelledby="changelog-title">
+      <h2 id="changelog-title">Changelog</h2>
+      <p class="section__sub">Taken from the GitHub release notes. <a href="https://github.com/Pelotrio/RealmSuite-Releases/releases">All releases</a></p>
+      <div class="log" data-changelog>
+        <!-- Static fallback. site.js replaces it with the release notes when the GitHub API answers. -->
+        <article class="log__entry">
+          <h3>RealmSuite 1.0</h3>
+          <ul>
+            <li>RealmBoard: scoreboard, champion select board, enemy names, voice control.</li>
+            <li>RealmForge: skins, color layers, effects and presets for your own champion, and Tempest skins you import.</li>
+            <li>RealmQueue: queue, draft and range map from the Shooting Range; casual and training matches are always accepted.</li>
+            <li>RealmAudio: voice and sound packs, loaded beside the game.</li>
+            <li>RealmBoost: frame cap, faster alt-tab, and garbage collection moved to where you don't see it.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <footer class="foot">
+      <p>RealmSuite is an independent project. It is not made, endorsed or supported by Hi-Rez Studios. Paladins and its names belong to their owners.</p>
+      <p><a href="https://github.com/Pelotrio/RealmSuite-Releases/releases">Releases</a> <a href="https://github.com/Pelotrio/RealmSuite-Releases/issues">Support</a> <a href="https://discord.gg/RnS6Q5MXXh" data-discord>Discord</a></p>
+    </footer>
+
+  </main>
+</div>
+
+</body>
+</html>
