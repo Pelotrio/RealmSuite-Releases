@@ -47,7 +47,7 @@
     </nav>
 
     <div class="side__foot">
-      <a class="button button--primary button--block" href="https://github.com/Pelotrio/RealmSuite-Releases/releases/latest" data-download>Download</a>
+      <a class="button button--primary button--block" href="https://github.com/Pelotrio/RealmSuite-Releases/releases/latest/download/RealmSuite-Setup.exe">Download</a>
     </div>
   </aside>
 
@@ -58,9 +58,9 @@
       <p class="hero__line">Mods for Paladins, and a faster game, in one launcher.</p>
 
       <div class="hero__actions">
-        <!-- site.js points every data-download link at the latest release's installer itself; until the GitHub API
-             answers, and without script, they open the release's page. -->
-        <a class="button button--primary button--large" href="https://github.com/Pelotrio/RealmSuite-Releases/releases/latest" data-download>Download</a>
+        <!-- Download starts the download: every release carries its installer under this one name, so the address of
+             the latest never changes. -->
+        <a class="button button--primary button--large" href="https://github.com/Pelotrio/RealmSuite-Releases/releases/latest/download/RealmSuite-Setup.exe">Download</a>
         <a class="button button--large" href="#realmboard">See the mods</a>
         <span class="hero__meta" data-version>For Windows</span>
       </div>
@@ -325,7 +325,7 @@
           <span class="steps__n" aria-hidden="true"></span>
           <div>
             <h3>Download the installer</h3>
-            <p><a href="https://github.com/Pelotrio/RealmSuite-Releases/releases/latest" data-download>Download</a> <code>RealmSuite-<var>version</var>-Setup.exe</code>.</p>
+            <p><a href="https://github.com/Pelotrio/RealmSuite-Releases/releases/latest/download/RealmSuite-Setup.exe">Download</a> <code>RealmSuite-Setup.exe</code>.</p>
           </div>
         </li>
         <li>
@@ -343,14 +343,13 @@
           </div>
         </li>
       </ol>
-      <p class="section__sub">Prefer no installer? Download <a href="https://github.com/Pelotrio/RealmSuite-Releases/releases/latest" data-download-zip>the zip</a> instead, extract it to a folder you will keep (not Program Files), and run <code>RealmSuite.exe</code> in it.</p>
 
       <h2 class="sub" id="update-title">Updates</h2>
       <div class="panel">
         <dl class="rows">
           <div><dt>Checking</dt><dd>The launcher checks for a new release when it starts and every few hours while it is open, and downloads only the files that changed. It verifies the release's signature and each file's hash before it installs anything.</dd></div>
           <div><dt>Installing</dt><dd>An update installs only while Paladins is closed. When one is ready, the Play page offers <strong>Restart to Update</strong>: close the game, then press it. An update that is ready while you play installs the next time the launcher starts.</dd></div>
-          <div><dt>Uninstall</dt><dd>Installed apps in Windows' Settings. With the zip: close Paladins and the launcher, then delete the RealmSuite folder.</dd></div>
+          <div><dt>Uninstall</dt><dd>Installed apps in Windows' Settings. It asks whether to keep your settings, skin profiles and sound packs.</dd></div>
         </dl>
       </div>
     </section>
@@ -364,7 +363,7 @@
           <p>What we can say:</p>
           <ul>
             <li>Every release is signed. The launcher checks the signature and each file's hash before it installs an update, and installs only while Paladins is closed.</li>
-            <li>You choose what runs. Every mod, and every feature of a mod, has its own switch, and deleting the folder removes everything.</li>
+            <li>You choose what runs. Every mod, and every feature of a mod, has its own switch, and uninstalling removes everything.</li>
             <li>RealmAudio writes nothing to the game's folder, and RealmForge's skins exist only on your screen: that mod sends nothing to the server.</li>
           </ul>
         </details>
@@ -382,7 +381,7 @@
         </details>
         <details>
           <summary>How do I uninstall it?</summary>
-          <p>Use Installed apps in Windows' Settings; it asks whether to keep your settings, skin profiles and sound packs. With the zip, close Paladins and the launcher and delete the RealmSuite folder: your settings, logs and saved skin profiles are inside it, so they go with it.</p>
+          <p>Use Installed apps in Windows' Settings. It asks whether to keep your settings, skin profiles and sound packs.</p>
         </details>
         <details>
           <summary>Will other players see my skins?</summary>
@@ -394,7 +393,7 @@
         </details>
         <details>
           <summary>The launcher says an update is unfinished. What now?</summary>
-          <p>Close Paladins and press Try Again. If that does not help, run the latest release's <code>RealmSuite-<var>version</var>-Setup.exe</code> again (or, for a zip install, extract its zip over your RealmSuite folder); this repairs the program and keeps your settings, logs and saved skin profiles.</p>
+          <p>Close Paladins and press Try Again. If that does not help, <a href="https://github.com/Pelotrio/RealmSuite-Releases/releases/latest/download/RealmSuite-Setup.exe">download the installer</a> and run it again; this repairs the program and keeps your settings, logs and saved skin profiles.</p>
         </details>
         <details>
           <summary>Where do I ask a question or report a problem?</summary>

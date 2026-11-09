@@ -4,8 +4,8 @@ Mods for Paladins, in one launcher: a scoreboard that shows more, skins and colo
 Shooting Range, sound packs.
 
 - **Site:** https://pelotrio.github.io/RealmSuite-Releases
-- **Download:** the [latest release](https://github.com/Pelotrio/RealmSuite-Releases/releases/latest). Run the installer,
-  or extract the zip to a folder you keep and run `RealmSuite\RealmSuite.exe`. RealmSuite updates itself from then on.
+- **Download:** [RealmSuite-Setup.exe](https://github.com/Pelotrio/RealmSuite-Releases/releases/latest/download/RealmSuite-Setup.exe),
+  the latest release's installer. Run it and press Play; RealmSuite updates itself from then on.
 - **Questions and problems:** open an [issue](https://github.com/Pelotrio/RealmSuite-Releases/issues) and say which mod
   and what you did, or ask in the [Discord](https://discord.gg/RnS6Q5MXXh).
 
