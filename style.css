@@ -224,7 +224,7 @@ h2 + .faq, h2 + .steps { margin-top: 1.25rem; }
 }
 .slot--hero { aspect-ratio: 16 / 9; border-radius: var(--r-lg); }
 
-.slot > img, .slot > video {
+.slot img, .slot video {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -232,6 +232,8 @@ h2 + .faq, h2 + .steps { margin-top: 1.25rem; }
   object-fit: cover;
   display: block;
 }
+/* A picture is a link to its file at full size (site.js). */
+.slot > a { position: absolute; inset: 0; cursor: zoom-in; }
 
 .slot__fill {
   position: absolute;
@@ -253,7 +255,7 @@ h2 + .faq, h2 + .steps { margin-top: 1.25rem; }
 .slot.is-filled, html.show-slots .slot { display: block; }
 .slot.is-filled .slot__fill { display: none; }
 
-/* --- a mod: a panel, its screenshot and its features as launcher rows --- */
+/* --- a mod: a panel, its screenshot across it and its features in two columns below --- */
 
 .mod {
   margin-top: 1rem;
@@ -267,20 +269,20 @@ h2 + .faq, h2 + .steps { margin-top: 1.25rem; }
 .mod__head h3 { font-size: 1.0625rem; }
 .mod__head p { margin-top: 0.1rem; color: var(--ink-muted); }
 
-.mod__body {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 1.25rem;
-  align-items: start;
-  padding: 0 1.25rem 1.25rem;
-}
-
-.mod__body:has(> .slot.is-filled), html.show-slots .mod__body { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
+.mod__body { padding: 0 1.25rem 1.25rem; }
+.mod__body > .slot { margin-bottom: 1.25rem; }
 
 .rows > div { padding: 0.55rem 0; border-top: 1px solid var(--rule); }
 .rows > div:first-child { border-top: 0; padding-top: 0; }
 .rows dt { font-weight: 500; }
 .rows dd { color: var(--ink-soft); }
+
+.mod__body > .rows {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem 2rem;
+}
+.mod__body > .rows > div { padding: 0; border: 0; }
 
 .mod__note {
   display: flex;
@@ -445,13 +447,12 @@ details p { padding: 0.2rem 1.25rem 1.1rem; max-width: 42rem; color: var(--ink-s
 h2.sub { margin-top: 2.5rem; font-size: 1.125rem; }
 h2.sub + .panel { margin-top: 0.75rem; }
 
-.guide {
-  margin: 0 1.25rem;
-  padding: 1rem 0 1.15rem;
-  border-top: 1px solid var(--rule);
-}
-.guide h4 { font-size: 0.9375rem; font-weight: 500; }
-.guide ol { margin-top: 0.6rem; list-style: none; counter-reset: guide; max-width: 46rem; }
+/* A mod's guide is closed until asked for: the card stays the picture and what the mod does. */
+.guide { border-top: 1px solid var(--rule); }
+.guide > summary { color: var(--ink-soft); border-radius: 0; }
+.mod > .guide:last-child > summary { border-radius: 0 0 var(--r-lg) var(--r-lg); }
+.mod > .guide[open]:last-child > summary { border-radius: 0; }
+.guide ol { margin: 0 1.25rem; padding: 0.2rem 0 1.15rem; list-style: none; counter-reset: guide; max-width: 46rem; }
 .guide li { position: relative; padding: 0.25rem 0 0.25rem 2rem; counter-increment: guide; color: var(--ink-soft); }
 .guide li::before {
   content: counter(guide);
@@ -524,6 +525,23 @@ html.show-slots .slot--hero .slot__brand { display: none; }
 .tiles__name { font-weight: 500; }
 .tiles__what { font-size: 0.8125rem; color: var(--ink-muted); }
 
+/* --- what gets faster: three plain facts under the hero, and how they were measured --- */
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 1.75rem;
+  list-style: none;
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-lg);
+}
+.facts li { display: flex; flex-direction: column; gap: 0.2rem; padding: 1rem 1.25rem; }
+.facts li + li { border-left: 1px solid var(--rule); }
+.facts strong { font-size: 1.0625rem; font-weight: 600; }
+.facts span { color: var(--ink-soft); }
+.facts__note { margin-top: 0.5rem; font-size: 0.8125rem; color: var(--ink-muted); }
+
 /* --- narrow windows: the sidebar becomes a bar --- */
 
 @media (max-width: 56rem) {
@@ -542,7 +560,8 @@ html.show-slots .slot--hero .slot__brand { display: none; }
   .side__nav { display: none; }
   .side__foot { margin: 0 0 0 auto; padding: 0; }
   .button--block { width: auto; }
-  .mod__body, .mod__body:has(> .slot.is-filled), html.show-slots .mod__body { grid-template-columns: minmax(0, 1fr); }
+  .mod__body > .rows, .facts { grid-template-columns: minmax(0, 1fr); }
+  .facts li + li { border-left: 0; border-top: 1px solid var(--rule); }
   html { scroll-padding-top: 4.5rem; }
   .mod { scroll-margin-top: 4.5rem; }
 }

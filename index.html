@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>RealmSuite: mods for Paladins</title>
-  <meta name="description" content="RealmSuite is a launcher and a set of mods for Paladins: a scoreboard that shows more, skins and colors only you see, queueing from the Shooting Range, sound packs.">
+  <meta name="description" content="RealmSuite is a launcher and a set of mods for Paladins: a faster start and more frames, a scoreboard that shows more, skins and colors only you see, queueing from the Shooting Range, sound packs.">
   <meta name="theme-color" content="#101214">
   <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self'; media-src 'self'; connect-src https://api.github.com; base-uri 'none'; form-action 'none'">
   <!-- The GitHub repository the page points at (Pelotrio/RealmSuite-Releases): this tag and the links below name it;
@@ -47,7 +47,7 @@
     </nav>
 
     <div class="side__foot">
-      <a class="button button--primary button--block" href="https://github.com/Pelotrio/RealmSuite-Releases/releases/latest">Download</a>
+      <a class="button button--primary button--block" href="https://github.com/Pelotrio/RealmSuite-Releases/releases/latest" data-download>Download</a>
     </div>
   </aside>
 
@@ -55,10 +55,12 @@
 
     <header class="hero">
       <h1>RealmSuite</h1>
-      <p class="hero__line">Mods for Paladins, in one launcher.</p>
+      <p class="hero__line">Mods for Paladins, and a faster game, in one launcher.</p>
 
       <div class="hero__actions">
-        <a class="button button--primary button--large" href="https://github.com/Pelotrio/RealmSuite-Releases/releases/latest" data-download>Download the latest release</a>
+        <!-- site.js points every data-download link at the latest release's installer itself; until the GitHub API
+             answers, and without script, they open the release's page. -->
+        <a class="button button--primary button--large" href="https://github.com/Pelotrio/RealmSuite-Releases/releases/latest" data-download>Download</a>
         <a class="button button--large" href="#realmboard">See the mods</a>
         <span class="hero__meta" data-version>For Windows</span>
       </div>
@@ -90,25 +92,31 @@
         <a href="#realmforge"><svg class="icon" width="20" height="20" viewBox="0 0 16 16" aria-hidden="true"><use href="#icon-forge"/></svg><span class="tiles__name">RealmForge</span><span class="tiles__what">Skins and colors</span></a>
         <a href="#realmqueue"><svg class="icon" width="20" height="20" viewBox="0 0 16 16" aria-hidden="true"><use href="#icon-queue"/></svg><span class="tiles__name">RealmQueue</span><span class="tiles__what">Queue in range</span></a>
         <a href="#realmaudio"><svg class="icon" width="20" height="20" viewBox="0 0 16 16" aria-hidden="true"><use href="#icon-audio"/></svg><span class="tiles__name">RealmAudio</span><span class="tiles__what">Sound packs</span></a>
-        <a href="#realmboost"><svg class="icon" width="20" height="20" viewBox="0 0 16 16" aria-hidden="true"><use href="#icon-boost"/></svg><span class="tiles__name">RealmBoost</span><span class="tiles__what">Frame cap</span></a>
+        <a href="#realmboost"><svg class="icon" width="20" height="20" viewBox="0 0 16 16" aria-hidden="true"><use href="#icon-boost"/></svg><span class="tiles__name">RealmBoost</span><span class="tiles__what">More frames</span></a>
       </nav>
+
+      <ul class="facts" aria-label="What gets faster">
+        <li><strong>12 seconds to the lobby</strong><span>Press Play and Paladins is in the lobby in about 12 seconds instead of 32.</span></li>
+        <li><strong>7% more frames</strong><span>The HUD costs less every frame, and the game's 228 FPS cap is yours to lift.</span></li>
+        <li><strong>Instant alt-tab</strong><span>Leaving fullscreen is an ordinary window switch, not a freeze.</span></li>
+      </ul>
+      <p class="facts__note">Measured on one PC: the start over 12 runs each way with a saved sign-in, the frames in the Shooting Range without a cap.</p>
     </header>
 
     <section class="section" id="before" aria-labelledby="before-title">
       <h2 id="before-title">Before you download</h2>
       <div class="panel">
         <dl class="rows">
-          <div><dt>Works with</dt><dd>Paladins on Windows 64-bit, from Steam, Epic or the Hi-Rez standalone install. The launcher finds the game; if it can't, point it at <code>Paladins.exe</code> in its Settings. Nothing else to install: <code>RealmSuite.exe</code> is the one program at the root of the folder, and it needs no .NET.</dd></div>
-          <div><dt>Game build</dt><dd>Each release is made for one Paladins build, named in its release notes. After a Paladins patch the launcher loads nothing into the game until a release for the new build is out, and you can start Paladins normally through Steam or Epic in the meantime.</dd></div>
-          <div><dt>Updates</dt><dd>The launcher fetches new releases and checks their signature, and installs them while Paladins is closed.</dd></div>
+          <div><dt>Works with</dt><dd>Paladins on Windows, from Steam, Epic or the Hi-Rez standalone install. Nothing else to install.</dd></div>
+          <div><dt>Updates</dt><dd>RealmSuite updates itself. Releases are signed, and install while Paladins is closed.</dd></div>
           <div><dt>Is it safe?</dt><dd>RealmSuite loads code into the game, as any game mod does. Read <a href="#safe">what that means and what we can say</a> before you decide.</dd></div>
         </dl>
       </div>
     </section>
 
     <section class="section" aria-labelledby="mods-title">
-      <h2 id="mods-title">The mods in 1.0</h2>
-      <p class="section__sub">Switch each mod on or off in the launcher's Mods page. Each mod's own settings, and the switch of each of its features, open in the game with F1 once Paladins is running.</p>
+      <h2 id="mods-title">The mods</h2>
+      <p class="section__sub">Switch mods on or off in the launcher. In the game, F1 opens each mod's settings.</p>
 
       <article class="mod" id="realmboard" aria-labelledby="m-board">
         <header class="mod__head">
@@ -125,22 +133,22 @@
             </div>
           </figure>
           <dl class="rows">
-            <div><dt>Scoreboard</dt><dd>On by default. Replaces the TAB board: both teams in one table, a symbol over each stat (kills, deaths, assists, damage, healing, shielding, objective time, damage taken, ping), team totals, items and ultimate charge, the best values highlighted. A summary bar under it shows the map and time, anti-healing, credits, solo kills and best streak, and the game is blurred behind it.</dd></div>
-            <div><dt>Champion select board</dt><dd>Both teams' names, ratings and picks on a key (Tab by default).</dd></div>
-            <div><dt>Enemy names</dt><dd>Champion select shows the enemies' names, where the game shows "Enemy 1" to "Enemy 5".</dd></div>
+            <div><dt>Scoreboard</dt><dd>Replaces the Tab board: both teams in one table with damage, healing, shielding, objective time, items and ultimate charge, and the best value of each column highlighted.</dd></div>
+            <div><dt>Champion select board</dt><dd>Both teams' names, ratings and picks, on Tab.</dd></div>
+            <div><dt>Enemy names</dt><dd>The enemies' names in champion select, where the game shows "Enemy 1" to "Enemy 5".</dd></div>
             <div><dt>Parties</dt><dd>Players who queued together share a color, on the board and in champion select.</dd></div>
             <div><dt>Voice</dt><dd>Turn your microphone on or off, and mute teammates or set each one's volume.</dd></div>
           </dl>
         </div>
-        <div class="guide">
-          <h4>Get started</h4>
+        <details class="guide">
+          <summary>How to use it</summary>
           <ol>
             <li>The scoreboard is on. In a match, hold Tab: the board opens in place of the game's own, and closes when you let go. While it is open, R swaps the items for the five cards.</li>
             <li>To change it, press F1, open Realm Board, then Settings. <em>Scoreboard on TAB</em> switches it off; below it are <em>Highlight best values</em>, <em>Summary bar</em>, <em>Background blur</em>, <em>Talent icons</em> and <em>Hide the game's HUD</em>.</li>
             <li>In champion select, press Tab for the board of both teams. Change its <em>Toggle key</em> in Settings.</li>
             <li>Open the Voice tab to switch your microphone and to mute or set the volume of each teammate who is in voice.</li>
           </ol>
-        </div>
+        </details>
       </article>
 
       <article class="mod" id="realmforge" aria-labelledby="m-forge">
@@ -166,8 +174,8 @@
             <div><dt>Champion select</dt><dd>Shows your pick in the skins you chose.</dd></div>
           </dl>
         </div>
-        <div class="guide">
-          <h4>Get started</h4>
+        <details class="guide">
+          <summary>How to use it</summary>
           <ol>
             <li>In the game press F1 and open Realm Forge. Its tabs are Skins, Effects and Colors, each with your champion and its profile at the top.</li>
             <li>On Skins, pick a body, weapon and mount skin. They load and wear while you play, in a match or in the Shooting Range.</li>
@@ -176,7 +184,7 @@
             <li>To wear a Tempest skin, open the launcher's Skins page, press <em>Import a Tempest Skin</em> and choose the <code>.tempest</code> file. It shows at once, even with the game running, in the Skins tab's weapon list with an <em>Imported</em> tag: click it to wear it. Custom skins are worn in the Shooting Range and in matches.</li>
             <li>Your saved look is worn again each time you spawn. Switch that off in Settings if you don't want it.</li>
           </ol>
-        </div>
+        </details>
         <p class="mod__note"><span class="dot dot--live" aria-hidden="true"></span>Nobody else sees your skins. The mod sends nothing to the server.</p>
       </article>
 
@@ -202,8 +210,8 @@
             <div><dt>After the match</dt><dd>After a match you queued for from the range, the game goes back to that range map by itself.</dd></div>
           </dl>
         </div>
-        <div class="guide">
-          <h4>Get started</h4>
+        <details class="guide">
+          <summary>How to use it</summary>
           <ol>
             <li>In the lobby or the Shooting Range press F1 and open Realm Queue. On the Queue tab the training and casual queues are listed by the game's own titles, such as Siege Training and Onslaught Training.</li>
             <li>Choose a queue and press Join Queue. The page shows how long you have been queued and what comes next; Leave Queue cancels.</li>
@@ -211,7 +219,7 @@
             <li>Champion select opens over the range: pick a champion, change your mind as often as you like, and Lock In. Without Lock In, your last pick locks shortly before the timer runs out. Set <em>Champion to pick</em> to have one picked for you.</li>
             <li>The Shooting Range page lists the maps; choose one and press Go to Map. Change Champion there switches your champion in the range. After a match you queued for from the range, the game returns to that map by itself; switch <em>Return to the range</em> off in Settings if you would rather not.</li>
           </ol>
-        </div>
+        </details>
       </article>
 
       <article class="mod" id="realmaudio" aria-labelledby="m-audio">
@@ -234,21 +242,21 @@
             <div><dt>Beside the game</dt><dd>Nothing in the game's folder is overwritten, and only you hear the change. Switch a pack off and the installed sounds come back.</dd></div>
           </dl>
         </div>
-        <div class="guide">
-          <h4>Get started</h4>
+        <details class="guide">
+          <summary>How to use it</summary>
           <ol>
             <li>In the game press F1, open Realm Audio and press <em>Open Packs Folder</em>. It is <code>Data/RealmAudio/Packs</code> inside your RealmSuite folder.</li>
             <li>Put your pack in it and press <em>Rescan Folder</em>. The pack appears in the list.</li>
             <li>Switch the pack on. Use the arrows to put the pack you want to win on top.</li>
             <li>Hear it from the next time its sounds load: load another champion or start a match. A sound that is already loaded keeps playing as it was, and some menu sounds may not change.</li>
           </ol>
-        </div>
+        </details>
       </article>
 
       <article class="mod" id="realmboost" aria-labelledby="m-boost">
         <header class="mod__head">
           <h3 id="m-boost"><svg class="icon" width="20" height="20" viewBox="0 0 16 16" aria-hidden="true"><use href="#icon-boost"/></svg>RealmBoost</h3>
-          <p>More frames and less delay, each change measured.</p>
+          <p>More frames and less waiting, each change measured.</p>
         </header>
         <div class="mod__body">
           <!-- MEDIA (owner): site/media/realmboost.png|jpg|gif: the Realm Boost Settings tab with the frame cap choice. -->
@@ -260,16 +268,16 @@
             </div>
           </figure>
           <dl class="rows">
-            <div><dt>Frame cap</dt><dd>Keep the game's own limit (228 FPS), remove it, or set yours between 30 and 1000.</dd></div>
-            <div><dt>Menus</dt><dd>Give the lobby and champion select a cap of their own.</dd></div>
-            <div><dt>Toggle key</dt><dd>A hotkey turns the cap off and back on.</dd></div>
-            <div><dt>Live</dt><dd>Changes apply on the next frame, without a restart. Switch the mod off and the game gets its own setting back.</dd></div>
-            <div><dt>Alt-tab</dt><dd>Leaving fullscreen is an ordinary window switch, not a stall.</dd></div>
-            <div><dt>Smoother matches</dt><dd>The game's 30-second garbage-collection hitch waits while you play and lands on your death camera instead.</dd></div>
+            <div><dt>A cheaper HUD</dt><dd>The HUD does less work every frame: about 7% more frames in the Shooting Range with the cap off.</dd></div>
+            <div><dt>Frame cap</dt><dd>Keep the game's 228 FPS limit, remove it, or set your own, with a separate one for menus and a key that toggles it.</dd></div>
+            <div><dt>Alt-tab</dt><dd>Leaving fullscreen is an ordinary window switch, not a freeze.</dd></div>
+            <div><dt>No 30-second hitch</dt><dd>The game's garbage collection waits while you play and runs on your death camera instead.</dd></div>
+            <div><dt>Faster start</dt><dd>With the launcher's Fast start, Play reaches the lobby in about 12 seconds instead of 32.</dd></div>
+            <div><dt>Live</dt><dd>Settings apply on the next frame. Switch one off and the game gets its own value back.</dd></div>
           </dl>
         </div>
-        <div class="guide">
-          <h4>Get started</h4>
+        <details class="guide">
+          <summary>How to use it</summary>
           <ol>
             <li>RealmBoost starts out leaving the game's own cap as it is. In the game press F1, open Realm Boost, then Settings.</li>
             <li>Under Frame cap, set <em>In matches</em> to Off, or to Custom and a <em>Match limit (FPS)</em>. It covers matches, the Shooting Range and loading.</li>
@@ -277,8 +285,8 @@
             <li>Choose a <em>Toggle key</em> to turn the cap off and back on while you play.</li>
             <li>The game's garbage collection, a short hitch every 30 seconds, waits while you play and runs when your champion dies, where you don't see it. Switch <em>Garbage collection when it cannot be seen</em> off in Settings to keep the game's timing.</li>
           </ol>
-        </div>
-        <p class="mod__note">Measured in the Shooting Range on one PC: without the cap, input reached the screen in 1.7 ms instead of 2.3 ms (median). More frames mean more CPU and GPU work and power.</p>
+        </details>
+        <p class="mod__note">Measured on one PC. The start: 12 runs each way, with a saved sign-in. The frames: in the Shooting Range without a cap, where input also reached the screen in 1.7 ms instead of 2.3 ms (median). More frames mean more CPU and GPU work and power.</p>
       </article>
     </section>
 
@@ -317,7 +325,7 @@
           <span class="steps__n" aria-hidden="true"></span>
           <div>
             <h3>Download the installer</h3>
-            <p>On the <a href="https://github.com/Pelotrio/RealmSuite-Releases/releases/latest">latest release</a>, under Assets, download <code>RealmSuite-<var>version</var>-Setup.exe</code> (for 1.0, <code>RealmSuite-1.0.0-Setup.exe</code>). The other files there are the zip, for people who want no installer, and files for the updater; "Source code" is not the game package.</p>
+            <p><a href="https://github.com/Pelotrio/RealmSuite-Releases/releases/latest" data-download>Download</a> <code>RealmSuite-<var>version</var>-Setup.exe</code>.</p>
           </div>
         </li>
         <li>
@@ -335,15 +343,14 @@
           </div>
         </li>
       </ol>
-      <p class="section__sub">Prefer no installer? Download <code>RealmSuite-<var>version</var>.zip</code> instead, extract it to a folder you can write to and will keep (not Program Files), and run <code>RealmSuite.exe</code> in it.</p>
+      <p class="section__sub">Prefer no installer? Download <a href="https://github.com/Pelotrio/RealmSuite-Releases/releases/latest" data-download-zip>the zip</a> instead, extract it to a folder you will keep (not Program Files), and run <code>RealmSuite.exe</code> in it.</p>
 
       <h2 class="sub" id="update-title">Updates</h2>
       <div class="panel">
         <dl class="rows">
           <div><dt>Checking</dt><dd>The launcher checks for a new release when it starts and every few hours while it is open, and downloads only the files that changed. It verifies the release's signature and each file's hash before it installs anything.</dd></div>
           <div><dt>Installing</dt><dd>An update installs only while Paladins is closed. When one is ready, the Play page offers <strong>Restart to Update</strong>: close the game, then press it. An update that is ready while you play installs the next time the launcher starts.</dd></div>
-          <div><dt>After a Paladins patch</dt><dd>The Play page says "Paladins updated, RealmSuite update pending", and the launcher loads nothing into the game until a release for the new build arrives. Start Paladins normally through Steam or Epic in the meantime; once the release is out, the launcher downloads it and you restart to update.</dd></div>
-          <div><dt>Uninstall</dt><dd>Close Paladins and the launcher, then delete the RealmSuite folder.</dd></div>
+          <div><dt>Uninstall</dt><dd>Installed apps in Windows' Settings. With the zip: close Paladins and the launcher, then delete the RealmSuite folder.</dd></div>
         </dl>
       </div>
     </section>
@@ -362,10 +369,6 @@
           </ul>
         </details>
         <details>
-          <summary>What happens when Paladins patches?</summary>
-          <p>Each RealmSuite release is built for one Paladins build. After a patch the launcher sees that the game no longer matches, loads nothing into it, and says "Paladins updated, RealmSuite update pending". You can start Paladins normally through Steam or Epic without RealmSuite. When a release for the new build is out, the launcher downloads it and offers Restart to Update.</p>
-        </details>
-        <details>
           <summary>How do I sign in to Paladins?</summary>
           <p>Play starts Paladins and signs in the way you chose under Settings, Sign in. <strong>Steam account</strong>: Paladins signs in through Steam. <strong>A saved account</strong>: one you added, with its password encrypted on this PC; Paladins writes its sign-in into its own log files. <strong>In the game</strong>: Paladins' own sign-in, or the one it remembers. Out of the box it is In the game.</p>
         </details>
@@ -379,7 +382,7 @@
         </details>
         <details>
           <summary>How do I uninstall it?</summary>
-          <p>Close Paladins and the launcher, then delete the RealmSuite folder. Your settings, logs and saved skin profiles are inside it, so they go with it.</p>
+          <p>Use Installed apps in Windows' Settings; it asks whether to keep your settings, skin profiles and sound packs. With the zip, close Paladins and the launcher and delete the RealmSuite folder: your settings, logs and saved skin profiles are inside it, so they go with it.</p>
         </details>
         <details>
           <summary>Will other players see my skins?</summary>
@@ -414,7 +417,8 @@
             <li>RealmForge: skins, color layers, effects and presets for your own champion, and Tempest skins you import.</li>
             <li>RealmQueue: queue, draft and range map from the Shooting Range; casual and training matches are always accepted.</li>
             <li>RealmAudio: voice and sound packs, loaded beside the game.</li>
-            <li>RealmBoost: frame cap, faster alt-tab, and garbage collection moved to where you don't see it.</li>
+            <li>RealmBoost: a cheaper HUD, your own frame cap, instant alt-tab, and garbage collection moved to where you don't see it.</li>
+            <li>The launcher: a faster start to the lobby, signed updates, saved accounts.</li>
           </ul>
         </article>
       </div>

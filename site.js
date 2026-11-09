@@ -1,5 +1,6 @@
-// RealmSuite landing page. Two jobs, both optional: fill the media slots whose files exist, and render the
-// GitHub release notes. Without script, or when the API does not answer, the page is complete as written.
+// RealmSuite landing page. Three jobs, all optional: fill the media slots whose files exist, render the GitHub
+// release notes, and point Download at the latest installer. Without script, or when the API does not answer, the
+// page is complete as written and Download opens the release's page.
 "use strict";
 
 const repo = document.querySelector('meta[name="realm-repo"]').content;
@@ -19,7 +20,11 @@ function tryMedia(slot) {
     const el = document.createElement(video ? "video" : "img");
     const done = () => {
       slot.classList.add("is-filled");
-      host.prepend(el);
+      if (video) { host.prepend(el); return; }
+      // A picture opens at its full size.
+      const link = Object.assign(document.createElement("a"), { href: file, target: "_blank", rel: "noopener", title: "Open the picture at full size" });
+      link.append(el);
+      host.prepend(link);
     };
     const fail = () => { el.remove(); next(); };
 
@@ -147,6 +152,13 @@ async function releases() {
 
     const latest = shown.find(r => !r.prerelease) ?? shown[0];
     document.querySelector("[data-version]").textContent = `${latest.tag_name} for Windows`;
+
+    // Download starts the download: the latest release's installer (and its zip) instead of the release's page.
+    const asset = suffix => (latest.assets ?? []).map(a => a.browser_download_url)
+      .find(url => typeof url === "string" && url.startsWith(`https://github.com/${repo}/releases/download/`) && url.endsWith(suffix));
+    const point = (selector, url) => { if (url) for (const a of document.querySelectorAll(selector)) a.href = url; };
+    point("[data-download]", asset("-Setup.exe"));
+    point("[data-download-zip]", asset(".zip"));
   } catch {
     // The fallback stays.
   } finally {
