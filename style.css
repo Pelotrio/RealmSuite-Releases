@@ -147,7 +147,7 @@ code {
   background: var(--accent);
 }
 
-.side__foot { margin-top: auto; padding-top: 1rem; }
+.side__foot { display: flex; flex-direction: column; gap: 0.5rem; margin-top: auto; padding-top: 1rem; }
 
 /* --- buttons --- */
 
@@ -558,7 +558,7 @@ html.show-slots .slot--hero .slot__brand { display: none; }
   }
   .side__brand { padding: 0; }
   .side__nav { display: none; }
-  .side__foot { margin: 0 0 0 auto; padding: 0; }
+  .side__foot { flex-direction: row; margin: 0 0 0 auto; padding: 0; }
   .button--block { width: auto; }
   .mod__body > .rows, .facts { grid-template-columns: minmax(0, 1fr); }
   .facts li + li { border-left: 0; border-top: 1px solid var(--rule); }
