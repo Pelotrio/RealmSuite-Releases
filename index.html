@@ -66,11 +66,11 @@
       </div>
 
       <!-- MEDIA (owner): the strong visual above the fold: the RealmBoard scoreboard as hero.jpg or hero.png in site/media/
-           (a 16:9 picture), or a loop. The caption under the figure (.hero__caption) says it is an offline render with
-           sample data; change it if the picture is a real capture. Whatever goes in must show invented or no player
-           names: the offline renderer's scenes carry real players' names. Until a file loads the slot shows the crest;
-           ?slots in the address shows the file names instead. -->
-      <figure class="slot slot--hero" data-media="media/hero.mp4 media/hero.webm media/hero.gif media/hero.png media/hero.jpg" data-alt="RealmBoard's scoreboard, rendered offline with sample data: both teams in one table with a symbol for each stat, team totals, items and a summary bar.">
+           (a 16:9 picture), or a loop. Today a capture of a real match with the ten player names painted over by invented
+           ones; the caption under the figure (.hero__caption) says so. Whatever goes in must show invented or no player
+           names: a live capture shows real players', and so do the offline renderer's scenes. Until a file loads the
+           slot shows the crest; ?slots in the address shows the file names instead. -->
+      <figure class="slot slot--hero" data-media="media/hero.mp4 media/hero.webm media/hero.gif media/hero.png media/hero.jpg" data-alt="RealmBoard's scoreboard in a match on Brightmarsh: both teams in one table with a symbol for each stat, the best values in gold, team totals, items and a summary bar, the game blurred behind it.">
         <div class="slot__brand" aria-hidden="true">
           <svg class="crest crest--hero" viewBox="0 0 64 64" width="144" height="144">
             <use href="#crest-steel"/>
@@ -85,7 +85,7 @@
         </div>
       </figure>
 
-      <p class="hero__caption">RealmBoard's scoreboard, rendered offline with sample data.</p>
+      <p class="hero__caption">RealmBoard's scoreboard in a match. The player names are invented.</p>
 
       <nav class="tiles" aria-label="The mods">
         <a href="#realmboard"><svg class="icon" width="20" height="20" viewBox="0 0 16 16" aria-hidden="true"><use href="#icon-board"/></svg><span class="tiles__name">RealmBoard</span><span class="tiles__what">Scoreboard, voice</span></a>
